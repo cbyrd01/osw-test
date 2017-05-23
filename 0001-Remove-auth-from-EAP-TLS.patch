@@ -1,0 +1,25 @@
+From 6717f51122acedc6753ec7bda54db98682fb480e Mon Sep 17 00:00:00 2001
+From: Christopher Byrd <chris@riosec.com>
+Date: Mon, 22 May 2017 20:35:11 -0500
+Subject: [PATCH] Remove auth from EAP-TLS
+
+---
+ src/eap_server/eap_server_tls.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/eap_server/eap_server_tls.c b/src/eap_server/eap_server_tls.c
+index 7249858..1741616 100644
+--- a/src/eap_server/eap_server_tls.c
++++ b/src/eap_server/eap_server_tls.c
+@@ -77,7 +77,7 @@ static void * eap_tls_init(struct eap_sm *sm)
+ 		return NULL;
+ 	data->state = START;
+ 
+-	if (eap_server_tls_ssl_init(sm, &data->ssl, 1, EAP_TYPE_TLS)) {
++	if (eap_server_tls_ssl_init(sm, &data->ssl, 0, EAP_TYPE_TLS)) {
+ 		wpa_printf(MSG_INFO, "EAP-TLS: Failed to initialize SSL.");
+ 		eap_tls_reset(sm, data);
+ 		return NULL;
+-- 
+2.1.4
+
