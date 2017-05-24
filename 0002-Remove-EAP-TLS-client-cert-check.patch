@@ -1,0 +1,30 @@
+From ac129f4f68540c72d9046d271cc9ffea5f352835 Mon Sep 17 00:00:00 2001
+From: Christopher Byrd <chris@riosec.com>
+Date: Tue, 23 May 2017 19:14:41 -0500
+Subject: [PATCH] Remove EAP-TLS client cert check
+
+---
+ src/eap_peer/eap_tls.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/src/eap_peer/eap_tls.c b/src/eap_peer/eap_tls.c
+index c1820a4..94267ba 100644
+--- a/src/eap_peer/eap_tls.c
++++ b/src/eap_peer/eap_tls.c
+@@ -33,13 +33,6 @@ static void * eap_tls_init(struct eap_sm *sm)
+ {
+ 	struct eap_tls_data *data;
+ 	struct eap_peer_config *config = eap_get_config(sm);
+-	if (config == NULL ||
+-	    ((sm->init_phase2 ? config->private_key2 : config->private_key)
+-	     == NULL &&
+-	     (sm->init_phase2 ? config->engine2 : config->engine) == 0)) {
+-		wpa_printf(MSG_INFO, "EAP-TLS: Private key not configured");
+-		return NULL;
+-	}
+ 
+ 	data = os_zalloc(sizeof(*data));
+ 	if (data == NULL)
+-- 
+2.1.4
+
