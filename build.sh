@@ -21,3 +21,5 @@ cp server.key ca.pem server.pem ../../../../hostapd/etc/
 cp ca.pem ../../../../client/etc
 cd ../../../../hostapd
 docker build -t hostapd .
+cd ../client
+docker build -t client .
