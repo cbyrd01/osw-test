@@ -10,3 +10,7 @@ To set up, run `./build.sh`.
 To start hostapd, run:
 
 `docker run -e SSID=myexample -e INTERFACE=wlan0 -e NAI_REALM=wifi.example.org --privileged --net="host" hostapd`
+
+To start the wpa_supplicant client, run:
+
+`docker run -e SSID=myexample -e INTERFACE=wlan0 --privileged --net="host" client`
